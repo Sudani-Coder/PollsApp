@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Django Polls App - Questions List</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
     </head>
     <body>
     {% if latest_question_list %}
