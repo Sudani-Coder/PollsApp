@@ -1,6 +1,10 @@
 from django.contrib import admin
 
-from polls.models import *
+from polls.models import Question, Choice
+
+# admin.site.site_header = "Polls Administration"
+# admin.site.site_title = "Polls Administration"
+# admin.site.index_title = "Polls Administration"
 
 class ChoiceInline(admin.TabularInline):
     model = Choice
