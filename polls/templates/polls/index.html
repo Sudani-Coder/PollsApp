@@ -1,23 +1,17 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Django Polls App - Questions List</title>
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-    </head>
-    <body>
+{% extends "base_index.html" %}
+
+{% block title %}Django Polls App - Questions List{% endblock %}
+
+{% block content %}
     {% if latest_question_list %}
-        <ul>
+    <ul>
         {% for question in latest_question_list %}
         <li>
             <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
         </li>
         {% endfor %}
-        </ul>
+    </ul>
     {% else %}
-        <p>No polls are available.</p>
+    <p>No polls are available.</p>
     {% endif %}
-    </body>
-</html>
+{% endblock %}
