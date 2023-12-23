@@ -3,6 +3,7 @@
 {% block title %}Django Polls App - Questions List{% endblock %}
 
 {% block content %}
+<div class="container">
     {% if latest_question_list %}
     <ul>
         {% for question in latest_question_list %}
@@ -14,4 +15,5 @@
     {% else %}
     <p>No polls are available.</p>
     {% endif %}
+</div>
 {% endblock %}
