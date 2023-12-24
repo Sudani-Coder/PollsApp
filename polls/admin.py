@@ -17,7 +17,7 @@ class QuestionAdmin(admin.ModelAdmin):
         ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
     ]
     inlines = [ChoiceInline]
-    list_display = ['question_text', 'owner', 'pub_date', 'active', 'created_at', 'updated_at', 'was_published_recently']
+    list_display = ['question_text', 'owner', 'pub_date', 'was_published_recently', 'created_at', 'updated_at', 'active']
     list_filter = ["active", 'created_at', 'pub_date']
     search_fields = ['question_text']
     date_hierarchy = 'pub_date'
@@ -25,12 +25,12 @@ class QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(Choice)
 class ChoiceAdmin(admin.ModelAdmin):
-    list_display = ["choice_text", "poll", 'created_at', 'updated_at']
-    search_fields = ["choice_text", "poll__text"]
-    autocomplete_fields = ["poll"]
+    list_display = ["choice_text", "question", 'created_at', 'updated_at']
+    search_fields = ["choice_text", "question__text"]
+    autocomplete_fields = ["question"]
 
 @admin.register(Vote)
 class VoteAdmin(admin.ModelAdmin):
-    list_display = ["choice", "poll", "user", 'created_at']
-    search_fields = ["choice__choice_text", "poll__text", "user__username"]
-    autocomplete_fields = ["choice", "poll", "user"]
+    list_display = ["choice", "question", "user", 'created_at']
+    search_fields = ["choice__choice_text", "question__text", "user__username"]
+    autocomplete_fields = ["choice", "question", "user"]
