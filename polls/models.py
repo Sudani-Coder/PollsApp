@@ -19,7 +19,7 @@ class Question(models.Model):
         Return False if user already voted
         """
         user_votes = user.vote_set.all()
-        qs = user_votes.filter(poll=self)
+        qs = user_votes.filter(question=self)
         if qs.exists():
             return False
         return True
