@@ -14,7 +14,7 @@ class Question(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def user_can_vote(self, user):
+    def user_can_vote(self, user) -> bool:
         """ 
         Return False if user already voted
         """
@@ -50,7 +50,7 @@ class Question(models.Model):
             ordering='pub_date',
             description='Published recently',
     )
-    def was_published_recently(self):
+    def was_published_recently(self) -> bool:
         """
         Return True if the question has been published within the last day.
         Retrun False if the question has been published older than 1 day.
@@ -58,8 +58,8 @@ class Question(models.Model):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
-    def __str__(self):
-        return self.question_text
+    def __str__(self) -> str:
+        return f"{self.question_text}"
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -71,7 +71,7 @@ class Choice(models.Model):
     def get_vote_count(self):
         return self.vote_set.count()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.question} - {self.choice_text}'
 
 class Vote(models.Model):
@@ -81,5 +81,5 @@ class Vote(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.question.question_text[:15]} - {self.choice.choice_text[:15]} - {self.user.username}'
