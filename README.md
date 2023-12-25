@@ -1,6 +1,6 @@
 # Django PollsApp
 
-## Django PollsApp is a full featured voting web app built with django.
+> Django PollsApp is a full featured voting web app built with django.
 
 ## Features
 - User Registration, And user Login.
